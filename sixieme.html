@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Vocabulaire Anglais - niveau A1/A1+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+            background: linear-gradient(135deg, #78DADE 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #3CB5B5;
+            margin-bottom: 30px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f0f0f0;
+            transition: transform 0.2s;
+        }
+        .question:hover {
+            transform: scale(1.02);
+        }
+        label {
+            display: block;
+            background: #fff;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        label:hover {
+            background: #78DADE;
+            color: #fff;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: #78DADE;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #78DADE;
+        }
+        #resultat {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+        @media (max-width: 700px) {
+            .container { width: 95%; padding: 20px; }
+            button { font-size: 16px; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>Quiz Vocabulaire Anglais niveau Sixième - A1/A1+</h1>
+    <div id="quiz"></div>
+    <button id="validerBtn">Valider</button>
+    <button id="recommencerBtn" style="display:none;">Recommencer</button>
+    <div id="resultat"></div>
+</div>
+
+<script>
+const questions = [
+  // FAMILY
+  { question: "family", choix: ["famille", "ami", "voisin"], bonneReponse: 0 },
+  { question: "parents", choix: ["enfants", "parents", "amis"], bonneReponse: 1 },
+  { question: "mother", choix: ["mère", "tante", "sœur"], bonneReponse: 0 },
+  { question: "father", choix: ["frère", "père", "oncle"], bonneReponse: 1 },
+  { question: "brother", choix: ["cousin", "frère", "ami"], bonneReponse: 1 },
+  { question: "sister", choix: ["sœur", "nièce", "tante"], bonneReponse: 0 },
+  { question: "uncle", choix: ["père", "oncle", "grand-père"], bonneReponse: 1 },
+  { question: "aunt", choix: ["tante", "sœur", "cousine"], bonneReponse: 0 },
+  { question: "cousin", choix: ["ami", "cousin", "voisin"], bonneReponse: 1 },
+  { question: "child", choix: ["bébé", "enfant", "adulte"], bonneReponse: 1 },
+  { question: "baby", choix: ["bébé", "enfant", "ado"], bonneReponse: 0 },
+  { question: "birth", choix: ["mort", "naissance", "fête"], bonneReponse: 1 },
+  { question: "wedding", choix: ["anniversaire", "mariage", "soirée"], bonneReponse: 1 },
+
+  // NATIONALITIES
+  { question: "British", choix: ["anglais", "britannique", "américain"], bonneReponse: 1 },
+  { question: "French", choix: ["français", "italien", "espagnol"], bonneReponse: 0 },
+  { question: "American", choix: ["canadien", "américain", "mexicain"], bonneReponse: 1 },
+  { question: "Australian", choix: ["australien", "anglais", "néo-zélandais"], bonneReponse: 0 },
+  { question: "Indian", choix: ["indien", "chinois", "japonais"], bonneReponse: 0 },
+
+  // ADJECTIVES
+  { question: "big", choix: ["grand", "petit", "court"], bonneReponse: 0 },
+  { question: "small", choix: ["grand", "petit", "énorme"], bonneReponse: 1 },
+  { question: "young", choix: ["vieux", "jeune", "grand"], bonneReponse: 1 },
+  { question: "old", choix: ["jeune", "ancien/vieux", "neuf"], bonneReponse: 1 },
+  { question: "funny", choix: ["drôle", "triste", "ennuyeux"], bonneReponse: 0 },
+  { question: "intelligent", choix: ["bête", "intelligent", "lent"], bonneReponse: 1 },
+  { question: "beautiful", choix: ["moche", "beau/belle", "sale"], bonneReponse: 1 },
+  { question: "shy", choix: ["timide", "bruyant", "méchant"], bonneReponse: 0 },
+  { question: "friendly", choix: ["gentil", "méchant", "froid"], bonneReponse: 0 },
+  { question: "selfish", choix: ["généreux", "égoïste", "sympa"], bonneReponse: 1 },
+
+  // CLOTHES
+  { question: "t-shirt", choix: ["t-shirt", "pantalon", "pull"], bonneReponse: 0 },
+  { question: "jeans", choix: ["jupe", "jean", "short"], bonneReponse: 1 },
+  { question: "shoes", choix: ["chaussures", "chaussettes", "chapeau"], bonneReponse: 0 },
+  { question: "coat", choix: ["manteau", "veste", "pull"], bonneReponse: 0 },
+  { question: "hat", choix: ["casquette", "chapeau", "bonnet"], bonneReponse: 1 },
+
+  // BODY
+  { question: "head", choix: ["tête", "bras", "main"], bonneReponse: 0 },
+  { question: "eyes", choix: ["yeux", "oreilles", "nez"], bonneReponse: 0 },
+  { question: "hands", choix: ["mains", "pieds", "bras"], bonneReponse: 0 },
+  { question: "legs", choix: ["jambes", "bras", "dos"], bonneReponse: 0 },
+  { question: "mouth", choix: ["nez", "bouche", "oreille"], bonneReponse: 1 },
+
+  // JOBS
+  { question: "teacher", choix: ["professeur", "docteur", "policier"], bonneReponse: 0 },
+  { question: "doctor", choix: ["infirmier", "médecin", "dentiste"], bonneReponse: 1 },
+  { question: "pilot", choix: ["pilote", "chauffeur", "mécanicien"], bonneReponse: 0 },
+  { question: "baker", choix: ["boucher", "boulanger", "chef"], bonneReponse: 1 },
+  { question: "farmer", choix: ["fermier", "ouvrier", "vendeur"], bonneReponse: 0 },
+
+  // ANIMALS
+  { question: "dog", choix: ["chat", "chien", "lapin"], bonneReponse: 1 },
+  { question: "cat", choix: ["chien", "chat", "souris"], bonneReponse: 1 },
+  { question: "rabbit", choix: ["lapin", "hamster", "rat"], bonneReponse: 0 },
+  { question: "lion", choix: ["tigre", "lion", "zèbre"], bonneReponse: 1 },
+  { question: "tiger", choix: ["lion", "tigre", "léopard"], bonneReponse: 1 },
+
+  // DAILY ROUTINE
+  { question: "to sleep", choix: ["manger", "dormir", "courir"], bonneReponse: 1 },
+  { question: "to eat", choix: ["boire", "manger", "jouer"], bonneReponse: 1 },
+  { question: "to go to school", choix: ["aller à l’école", "dormir", "travailler"], bonneReponse: 0 },
+  { question: "to read", choix: ["écrire", "lire", "écouter"], bonneReponse: 1 },
+
+  // HOUSE
+  { question: "house", choix: ["maison", "porte", "fenêtre"], bonneReponse: 0 },
+  { question: "kitchen", choix: ["salon", "chambre", "cuisine"], bonneReponse: 2 },
+  { question: "bedroom", choix: ["chambre", "garage", "jardin"], bonneReponse: 0 },
+  { question: "garden", choix: ["jardin", "mur", "toit"], bonneReponse: 0 },
+
+  // FOOD
+  { question: "meat", choix: ["fruit", "viande", "légume"], bonneReponse: 1 },
+  { question: "vegetables", choix: ["légumes", "fruits", "viande"], bonneReponse: 0 },
+  { question: "fruit", choix: ["légumes", "fruits", "desserts"], bonneReponse: 1 },
+  { question: "cake", choix: ["pain", "gâteau", "fromage"], bonneReponse: 1 },
+
+  // FEELINGS
+  { question: "happy", choix: ["triste", "content", "fatigué"], bonneReponse: 1 },
+  { question: "sad", choix: ["heureux", "triste", "énervé"], bonneReponse: 1 },
+  { question: "angry", choix: ["calme", "énervé", "joyeux"], bonneReponse: 1 },
+  { question: "afraid", choix: ["courageux", "effrayé", "content"], bonneReponse: 1 }
+];
+
+function melangerTableau(tab){
+    for(let i=tab.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [tab[i],tab[j]]=[tab[j],tab[i]];
+    }
+}
+
+const nombreQuestions = 10;
+let quizSelection = [];
+
+function afficherQuiz(){
+    const quizDiv = document.getElementById("quiz");
+    quizDiv.innerHTML="";
+    melangerTableau(questions);
+    quizSelection = questions.slice(0,nombreQuestions);
+
+    quizSelection.forEach((q,index)=>{
+        const div=document.createElement("div");
+        div.classList.add("question");
+        let html=`<p>${index+1}. Traduire : <strong>${q.question}</strong></p>`;
+        const choixMelanges=[...q.choix];
+        melangerTableau(choixMelanges);
+        choixMelanges.forEach(c=>{
+            html+=`<label><input type="radio" name="q${index}" value="${c}">${c}</label>`;
+        });
+        div.innerHTML=html;
+        quizDiv.appendChild(div);
+    });
+
+    document.getElementById("resultat").innerHTML="";
+    document.getElementById("recommencerBtn").style.display="none";
+    document.getElementById("validerBtn").style.display="block";
+}
+
+function validerQuiz(){
+    let score=0;
+    quizSelection.forEach((q,index)=>{
+        const reponse=document.querySelector(`input[name="q${index}"]:checked`);
+        if(reponse && reponse.value===q.choix[q.bonneReponse]) score++;
+    });
+    const pourcentage=(score/quizSelection.length)*100;
+    let niveau="";
+    if(pourcentage>=80) niveau="Excellent";
+    else if(pourcentage>=60) niveau="Bon 👍";
+    else if(pourcentage>=40) niveau="Moyen";
+    else niveau="À améliorer";
+
+    document.getElementById("resultat").innerHTML=`Score : ${score} / ${quizSelection.length}<br>Niveau : ${niveau}`;
+    document.getElementById("validerBtn").style.display="none";
+    document.getElementById("recommencerBtn").style.display="block";
+}
+
+document.getElementById("validerBtn").addEventListener("click", validerQuiz);
+document.getElementById("recommencerBtn").addEventListener("click", afficherQuiz);
+
+afficherQuiz();
+</script>

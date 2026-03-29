@@ -29,19 +29,17 @@ h1 {
 /* BOUTONS */
 button {
   display: block;
-  margin: 10px auto;
+  width: 100%;
+  margin: 8px 0;
   padding: 12px;
+  border-radius: 8px;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 80%;
-  font-size: 16px;
   background: #ff9a9e;
+  cursor: pointer;
   transition: 0.2s;
 }
 
 button:hover {
-  transform: scale(1.05);
   background: #ff4d6d;
   color: white;
 }

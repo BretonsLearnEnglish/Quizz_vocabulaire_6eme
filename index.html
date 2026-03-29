@@ -2,41 +2,94 @@
 <html lang="fr">
 
 <head>
-  <title>Mon site</title>
+  <meta charset="UTF-8">
+  <title>Bretons Learn English</title>
 
-<link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
+<style> 
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+.intro {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.goodluck {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.levels {
+  margin-top: 25px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #ff1a3c;
+  transform: scale(1.05);
+}
+</style>   
 <body>
 
-<nav>
-  <a href="index.html">Accueil</a>
-  <a href="sixieme.html">Sixièmes</a>
-  <a href="cinquieme.html">Cinquièmes</a>
-  <a href="quatrieme.html">Quatrièmes</a>
-  <a href="troisieme.html">Troisièmes</a>
-</nav>
 
+<div class="container">
 
   <h1>🇬🇧 Bretons Learn English</h1>
 
-<p>
-Bienvenue sur notre plateforme de quiz de vocabulaire anglais !
-</p>
+  <p class="intro">
+    Welcome! 👋
+  </p>
 
-<p>
-Ce site a été conçu pour aider les élèves à apprendre et réviser l’anglais de manière ludique et interactive.
-Choisis ton niveau et teste tes connaissances à travers différents quiz adaptés à ta classe.
-</p>
+  <p>
+    Bienvenue sur <strong>Bretons Learn English</strong>, une plateforme de quiz pour apprendre et réviser le vocabulaire anglais.
+  </p>
 
-<p>
-🎯 Objectif : apprendre en s’amusant et progresser à son rythme !
-</p>
+  <p>
+    Choisis ton niveau et teste tes connaissances grâce à des quiz interactifs adaptés à ta classe.
+  </p>
 
-<p>
-Bonne chance et... have fun! 😄
-</p>
+  <p>
+    🎯 Apprendre l’anglais peut être amusant… alors lance-toi !
+  </p>
+
+  <p class="goodluck">
+    Good luck and have fun! 😄
+  </p>
+
+  <!-- 🎯 BOUTONS NIVEAUX -->
+  <div class="levels">
+    <a href="sixieme.html"><button>6ème</button></a>
+    <a href="cinquieme.html"><button>5ème</button></a>
+    <a href="quatrieme.html"><button>4ème</button></a>
+    <a href="troisieme.html"><button>3ème</button></a>
+  </div>
+
+</div>
 
 </body>
 </html>

@@ -101,7 +101,7 @@ function afficherQuiz() {
   document.getElementById("score").textContent = "";
   document.getElementById("recommencerBtn").style.display = "none";
 
-  afficherQuestion();
+  afficherQuizz();
 }
 
 document

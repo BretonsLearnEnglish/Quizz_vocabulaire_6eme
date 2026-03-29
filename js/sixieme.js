@@ -1,4 +1,4 @@
-const quiz = [
+const quiz = [ /* questions 6e */ 
 
 { question: "family", choix: ["famille", "ami", "voisin"], bonneReponse: 0 },
 { question: "parents", choix: ["enfants", "parents", "amis"], bonneReponse: 1 },

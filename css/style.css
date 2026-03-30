@@ -93,9 +93,9 @@ button:hover {
 }
 
 #recommencerBtn {
-  background-color: #003087; /* bleu British */
+  background-color: #003087 !important; /* bleu British */
   color: #fff;
-  text-align: center;
+  text-align: center !important;
 }
 
 #menuBtn, #startQuizBtn {

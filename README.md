@@ -1,8 +1,8 @@
 # Quizz_vocabulaire_anglais
 
-Ce site web a pour objectif d'aider les élèves de façon ludique à intégrer le vocabulaire du programme de langues en Anglais LV1.
-Le contenu de ce site se base sur le programme d'anglais pour les classes de collège, disponible sur le site de l'éducation nationale.
-https://www.education.gouv.fr/sites/default/files/annexe-3-programme-d-anglais-pour-les-classes-de-coll-ge-440358.pdf
+Ce site web a pour objectif d'aider les élèves de façon ludique à intégrer le vocabulaire du programme de langues en Anglais LV1. <br>
+Le contenu de ce site se base sur le programme d'anglais pour les classes de collège, disponible sur le site de l'éducation nationale. <br>
+https://www.education.gouv.fr/sites/default/files/annexe-3-programme-d-anglais-pour-les-classes-de-coll-ge-440358.pdf <br>
 ---
 
 ## 🚀 Voir le site en ligne

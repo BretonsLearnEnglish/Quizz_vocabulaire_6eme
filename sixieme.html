@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Anglais</title>
   <link rel="stylesheet" href="css/style.css">
-  
-<!-- Inclure d'abord la base de données, puis le script principal -->
-  <script src="js/sixieme.js"></script> <!-- contient le tableau quiz -->
-  <script src="js/script.js"></script>   <!-- contient le code du quiz -->
-  
 </head>
-
 <body>
 
-  <!-- ====== Menu principal ====== -->
+  <!-- Menu -->
   <div id="menu">
     <h1>🇬🇧 Quiz d’anglais niveau A1 / A1+</h1>
     <button id="startQuizBtn">Démarrer le quiz</button>
   </div>
 
-  <!-- ====== Quiz ====== -->
+  <!-- Quiz -->
   <div class="container" style="display:none;">
     <div id="progress-bar">
       <div id="progress"></div>
@@ -35,6 +28,10 @@
     <button id="recommencerBtn" style="display:none;">🔁 Recommencer</button>
     <button id="menuBtn">⬅ Retour au menu</button>
   </div>
+
+  <!-- Les bons scripts dans le bon ordre -->
+  <script src="js/sixieme.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>

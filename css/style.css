@@ -92,7 +92,13 @@ button:hover {
   color: #fff;
 }
 
-#recommencerBtn, #menuBtn, #startQuizBtn {
+#recommencerBtn {
+  background-color: #003087; /* bleu British */
+  color: #fff;
+  text-align: center;
+}
+
+#menuBtn, #startQuizBtn {
   background-color: #d81b60; /* rouge British */
   color: #fff;
 }

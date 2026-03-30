@@ -1,20 +1,6 @@
 // =================== Configuration ===================
 const NOMBRE_QUESTIONS = 10;
 
-// Exemple de quiz (remplace avec ton tableau complet)
-const quiz = [
-  { question: "family", choix: ["famille", "ami", "voisin"], bonneReponse: 0 },
-  { question: "baby", choix: ["bébé", "enfant", "adulte"], bonneReponse: 0 },
-  { question: "wedding", choix: ["mariage", "anniversaire", "fête"], bonneReponse: 0 },
-  { question: "to spend time", choix: ["passer du temps", "travailler", "courir"], bonneReponse: 0 },
-  { question: "to visit", choix: ["visiter", "ignorer", "fermer"], bonneReponse: 0 },
-  { question: "lion", choix: ["lion", "tigre", "zèbre"], bonneReponse: 0 },
-  { question: "forest", choix: ["forêt", "désert", "plage"], bonneReponse: 0 },
-  { question: "lake", choix: ["lac", "mer", "rivière"], bonneReponse: 0 },
-  { question: "beautiful", choix: ["beau", "moche", "grand"], bonneReponse: 0 },
-  { question: "to travel", choix: ["voyager", "rester", "marcher"], bonneReponse: 0 }
-];
-
 let indexQuestion = 0;
 let score = 0;
 let quizSelection = [];

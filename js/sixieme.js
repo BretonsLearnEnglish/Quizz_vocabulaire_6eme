@@ -1,3 +1,6 @@
+<script src="js/sixieme.js"></script> <!-- ta base de données -->
+<script src="js/quiz.js"></script>     <!-- ton quiz fonctionnel -->
+
 const quiz = [ /* questions 6e */ 
 
 { question: "family", choix: ["famille", "ami", "voisin"], bonneReponse: 0 },

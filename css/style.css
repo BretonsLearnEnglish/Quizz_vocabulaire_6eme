@@ -81,6 +81,10 @@ button:hover {
   margin: 0;              /* on enlève la marge globale */
   padding: 12px 20px;
   font-size: 1.2em;
+  /* Ombre douce sur les boutons de réponse */
+
+  box-shadow: 0 4px 6px rgba(0, 48, 135, 0.4); /* bleu foncé légèrement diffusé */
+  transition: all 0.3s ease; /* pour que hover soit fluide */
 }
 
 #reponses button.correct {
@@ -123,4 +127,12 @@ button:hover {
   font-size: 1.4em;
   margin-top: 20px;
   font-weight: bold;
+}
+
+
+/* Agrandir légèrement le texte sur petits écrans */
+@media (max-width: 480px) {
+  #reponses button {
+    font-size: 1.4em; /* un peu plus grand sur mobile */
+  }
 }

@@ -72,10 +72,11 @@ function verifierReponse(indexChoisi, choixMelanges) {
     indexQuestion++;
 
     if (indexQuestion < quizSelection.length) {
-      afficherQuiz();
-    } else {
-      afficherScore();
-    }
+  afficherQuestion(); // ✅ CORRECT
+} else {
+  afficherScore();
+}
+   
   }, 1200);
 }
 
@@ -91,7 +92,7 @@ function afficherScore() {
   document.getElementById("recommencerBtn").style.display = "block";
 }
 
-function afficherQuiz() {
+function afficherQuestion() {
   indexQuestion = 0;
   score = 0;
 
@@ -110,4 +111,8 @@ document
 
 afficherQuestion();
 
+function retourMenu() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
 

@@ -65,9 +65,22 @@ button:hover {
   transform: scale(1.05);
 }
 
+#reponses {
+  display: flex;
+  flex-direction: column; /* empile verticalement */
+  gap: 12px;              /* espace entre boutons */
+  align-items: center;    /* centre horizontalement */
+  margin-top: 20px;
+}
+
 #reponses button {
   background-color: #003087;
   color: #fff;
+  width: 60%;             /* largeur confortable */
+  max-width: 300px;       /* limite sur grands écrans */
+  margin: 0;              /* on enlève la marge globale */
+  padding: 12px 20px;
+  font-size: 1.2em;
 }
 
 #reponses button.correct {

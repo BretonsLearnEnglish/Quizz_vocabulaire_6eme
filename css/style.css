@@ -41,6 +41,32 @@ h1 {
   margin-bottom: 20px;
 }
 
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centre horizontalement tous les enfants */
+  justify-content: center;
+  margin-top: 100px; /* ou ce que tu veux pour l’espace vertical */
+  text-align: center; /* pour que le texte soit bien centré */
+  gap: 20px; /* espace entre titre et bouton */
+}
+
+#menu button {
+  min-width: 180px;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  background-color: #d81b60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#menu button:hover {
+  transform: scale(1.05);
+}
+
 #question {
   font-size: 1.5em;
   margin: 20px 0;

@@ -6,6 +6,9 @@ let indexQuestion = 0;
 let score = 0;
 let quizSelection = [];
 
+let playerName = "";
+let niveau = "";
+
 function melangerTableau(tab) {
   for (let i = tab.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -80,14 +83,45 @@ function afficherQuiz() {
 }
 
 function startQuiz() {
+  playerName = document.getElementById("playerName").value.trim();
+  niveau = document.getElementById("niveau").value;
+
+  if (!playerName) {
+    alert("Veuillez entrer un nom !");
+    return;
+  }
+
   document.getElementById("menu").style.display = "none";
   document.querySelector(".container").style.display = "block";
+
   afficherQuiz();
 }
 
 function retourMenu() {
   document.querySelector(".container").style.display = "none";
   document.getElementById("menu").style.display = "block";
+}
+
+function sauvegarderScore() {
+  const classement = JSON.parse(localStorage.getItem("classement")) || [];
+
+  classement.push({
+    nom: playerName,
+    score: score,
+    niveau: niveau,
+    date: new Date().toISOString()
+  });
+
+  localStorage.setItem("classement", JSON.stringify(classement));
+}
+
+function obtenirTop10(niveauChoisi) {
+  const classement = JSON.parse(localStorage.getItem("classement")) || [];
+
+  return classement
+    .filter(joueur => joueur.niveau === niveauChoisi)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10);
 }
 
 // Listeners

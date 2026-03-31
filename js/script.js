@@ -62,11 +62,18 @@ function verifierReponse(indexChoisi, choixMelanges) {
 }
 
 function afficherScore() {
+  sauvegarderScore();
+
   document.getElementById("question").textContent = "🎉 Quiz terminé !";
   document.getElementById("reponses").innerHTML = "";
   document.getElementById("progress").style.width = "100%";
-  document.getElementById("score").textContent = `Score : ${score} / ${quizSelection.length}`;
+
+  document.getElementById("score").textContent =
+    `Score : ${score} / ${quizSelection.length}`;
+
   document.getElementById("recommencerBtn").style.display = "block";
+
+  afficherClassement();
 }
 
 function afficherQuiz() {
@@ -122,6 +129,19 @@ function obtenirTop10(niveauChoisi) {
     .filter(joueur => joueur.niveau === niveauChoisi)
     .sort((a, b) => b.score - a.score)
     .slice(0, 10);
+}
+
+function afficherClassement() {
+  const top10 = obtenirTop10(niveau);
+
+  const container = document.getElementById("classement");
+  container.innerHTML = "<h3>🏆 Classement</h3>";
+
+  top10.forEach((joueur, index) => {
+    const div = document.createElement("div");
+    div.textContent = `${index + 1}. ${joueur.nom} - ${joueur.score}`;
+    container.appendChild(div);
+  });
 }
 
 // Listeners

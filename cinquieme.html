@@ -8,12 +8,23 @@
 </head>
 <body>
 
-  <!-- Menu -->
+  <!-- Header -->
+<header class="header">
+  <nav class="nav">
+    <a href="index.html"><button>Menu Principal</button></a>
+    <a href="sixieme.html"><button>6ème</button></a>
+    <a href="cinquieme.html"><button>5ème</button></a>
+    <a href="quatrieme.html"><button>4ème</button></a>
+    <a href="troisieme.html"><button>3ème</button></a>
+  </nav>
+</header>
+
   <div id="menu">
-    <h1>🇬🇧 Quiz d’anglais niveau Cinquième</h1>
+    <h1> Quiz d’anglais niveau A1+ pour les élèves de Cinquième </h1>
     <button id="startQuizBtn">Démarrer le quiz</button>
   </div>
 
+  
   <!-- Quiz -->
   <div class="container" style="display:none;">
     <div id="progress-bar">
@@ -25,13 +36,16 @@
     <div id="feedback"></div>
     <div id="score"></div>
 
-    <button id="recommencerBtn" style="display:none;">🔁 Recommencer</button>
+    <button id="recommencerBtn" style="display:none;"> Recommencer</button>
     <button id="menuBtn">⬅ Retour au menu</button>
   </div>
 
+
+  
   <!-- Les bons scripts dans le bon ordre -->
   <script src="js/cinquieme.js"></script>
   <script src="js/script.js"></script>
 
+  
 </body>
 </html>

@@ -87,14 +87,6 @@ function afficherQuiz() {
   afficherQuestion();
 }
 
-function startQuiz() {
-  playerName = "Joueur"; // valeur par défaut
-  niveau = "6eme";       // valeur fixe pour cette page
-
-  document.getElementById("menu").style.display = "none";
-  document.querySelector(".container").style.display = "block";
-
-}
 
 
 // Listeners

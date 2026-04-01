@@ -1,4 +1,3 @@
-
 const NOMBRE_QUESTIONS = 10;
 
 
@@ -20,7 +19,7 @@ if (typeof quiz === "undefined") {
 
 let quizMelange = [...quiz];
 melangerTableau(quizMelange);
-let quizSelection = quizMelange.slice(0, NOMBRE_QUESTIONS);
+let quizSelection = [];
 
 function afficherQuestion() {
   if (!quizSelection[indexQuestion]) return;
@@ -51,6 +50,21 @@ button.addEventListener("click", () => {
 
     document.getElementById("reponses").appendChild(button);
   });
+}
+
+function afficherQuiz() {
+  indexQuestion = 0;
+  score = 0;
+
+  let quizMelange = [...quiz]; // 🔥 copie propre
+  melangerTableau(quizMelange);
+
+  quizSelection = quizMelange.slice(0, Math.min(NOMBRE_QUESTIONS, quiz.length));
+
+  document.getElementById("score").textContent = "";
+  document.getElementById("recommencerBtn").style.display = "none";
+
+  afficherQuestion();
 }
 
 function verifierReponse(indexChoisi, choixMelanges) {
@@ -94,20 +108,6 @@ function afficherScore() {
     "Score : " + score + " / " + quizSelection.length;
 
   document.getElementById("recommencerBtn").style.display = "block";
-}
-
-function afficherQuiz() {
-  indexQuestion = 0;
-  score = 0;
-
-let quizMelange = [...quiz];
-melangerTableau(quizMelange);
-quizSelection = quizMelange.slice(0, Math.min(NOMBRE_QUESTIONS, quiz.length));
-
-  document.getElementById("score").textContent = "";
-  document.getElementById("recommencerBtn").style.display = "none";
-
-  afficherQuestion();
 }
 
 document.addEventListener("DOMContentLoaded", function() {

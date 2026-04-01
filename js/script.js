@@ -18,10 +18,12 @@ if (typeof quiz === "undefined") {
     console.error("Le quiz n'est pas chargé !");
 }
 
-melangerTableau(quiz);
-let quizSelection = quiz.slice(0, NOMBRE_QUESTIONS);
+let quizMelange = [...quiz];
+melangerTableau(quizMelange);
+let quizSelection = quizMelange.slice(0, NOMBRE_QUESTIONS);
 
 function afficherQuestion() {
+  if (!quizSelection[indexQuestion]) return;
   const q = quizSelection[indexQuestion];
 
   document.getElementById("question").textContent = q.question;
@@ -98,8 +100,9 @@ function afficherQuiz() {
   indexQuestion = 0;
   score = 0;
 
-  melangerTableau(quiz);
-  quizSelection = quiz.slice(0, Math.min(NOMBRE_QUESTIONS, quiz.length));
+let quizMelange = [...quiz];
+melangerTableau(quizMelange);
+quizSelection = quizMelange.slice(0, Math.min(NOMBRE_QUESTIONS, quiz.length));
 
   document.getElementById("score").textContent = "";
   document.getElementById("recommencerBtn").style.display = "none";
@@ -113,6 +116,20 @@ document.addEventListener("DOMContentLoaded", function() {
     .getElementById("recommencerBtn")
     .addEventListener("click", afficherQuiz);
 
-  afficherQuestion();
+  // 🎯 BOUTON START
+  document
+    .getElementById("startQuizBtn")
+    .addEventListener("click", function() {
 
+      document.getElementById("menu").style.display = "none";
+      document.querySelector(".container").style.display = "block";
+
+      afficherQuiz();
+  });
+
+document.getElementById("menuBtn").addEventListener("click", function() {
+  document.getElementById("menu").style.display = "block";
+  document.querySelector(".container").style.display = "none";  
+  
 });
+

@@ -87,7 +87,12 @@ function afficherQuiz() {
   afficherQuestion();
 }
 
+function startQuiz() {
+  document.getElementById("menu").style.display = "none";
+  document.querySelector(".container").style.display = "block";
 
+  afficherQuiz();
+}
 
 // Listeners
 document.addEventListener("DOMContentLoaded", function() {

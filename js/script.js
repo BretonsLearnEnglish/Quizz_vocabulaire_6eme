@@ -82,9 +82,9 @@ function verifierReponse(indexChoisi, choixMelanges) {
 
   if (choixMelanges[indexChoisi].correct) {
     score++;
-    document.getElementById("feedback").textContent = "✅ Bonne réponse !";
+    document.getElementById("feedback").textContent = "✅ Well done !";
   } else {
-    document.getElementById("feedback").textContent = "❌ Mauvaise réponse !";
+    document.getElementById("feedback").textContent = "❌ Try again !";
   }
 
 setTimeout(() => {
@@ -112,24 +112,20 @@ function afficherScore() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  document
-    .getElementById("recommencerBtn")
+  document.getElementById("recommencerBtn")
     .addEventListener("click", afficherQuiz);
 
-  // 🎯 BOUTON START
-  document
-    .getElementById("startQuizBtn")
+  document.getElementById("startQuizBtn")
     .addEventListener("click", function() {
-
       document.getElementById("menu").style.display = "none";
       document.querySelector(".container").style.display = "block";
-
       afficherQuiz();
-  });
+    });
 
-document.getElementById("menuBtn").addEventListener("click", function() {
-  document.getElementById("menu").style.display = "block";
-  document.querySelector(".container").style.display = "none";  
-  
+  document.getElementById("menuBtn")
+    .addEventListener("click", function() {
+      document.getElementById("menu").style.display = "block";
+      document.querySelector(".container").style.display = "none";
+    });
+
 });
-

@@ -1,62 +1,22 @@
 const NOMBRE_QUESTIONS = 10;
 
-
 let indexQuestion = 0;
 let score = 0;
+let quizSelection = [];
 
 function melangerTableau(tab) {
-  for(let i = tab.length - 1; i > 0; i--){
+  for (let i = tab.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [tab[i], tab[j]] = [tab[j], tab[i]];
   }
-}
-
-console.log(quiz);
-
-if (typeof quiz === "undefined") {
-    console.error("Le quiz n'est pas chargé !");
-}
-
-let quizMelange = [...quiz];
-melangerTableau(quizMelange);
-let quizSelection = [];
-
-function afficherQuestion() {
-  if (!quizSelection[indexQuestion]) return;
-  const q = quizSelection[indexQuestion];
-
-  document.getElementById("question").textContent = q.question;
-  document.getElementById("reponses").innerHTML = "";
-  document.getElementById("feedback").textContent = "";
-
-  // 📊 progression
-let progression = ((indexQuestion + 1) / quizSelection.length) * 100;
-  document.getElementById("progress").style.width = progression + "%";
-
-let choixMelanges = q.choix.map((choix, index) => ({
-    texte: choix,
-    correct: index === q.bonneReponse
-  }));
-
-melangerTableau(choixMelanges);
-
-choixMelanges.forEach((choixObj, index) => {
-    const button = document.createElement("button");
-    button.textContent = choixObj.texte;
-
-button.addEventListener("click", () => {
-      verifierReponse(index, choixMelanges);
-    });
-
-    document.getElementById("reponses").appendChild(button);
-  });
 }
 
 function afficherQuiz() {
   indexQuestion = 0;
   score = 0;
 
-  let quizMelange = [...quiz]; // 🔥 copie propre
+  // 🔥 copie du quiz (important)
+  let quizMelange = [...quiz];
   melangerTableau(quizMelange);
 
   quizSelection = quizMelange.slice(0, Math.min(NOMBRE_QUESTIONS, quiz.length));
@@ -67,13 +27,44 @@ function afficherQuiz() {
   afficherQuestion();
 }
 
+function afficherQuestion() {
+  if (!quizSelection[indexQuestion]) return;
+
+  const q = quizSelection[indexQuestion];
+
+  document.getElementById("question").textContent = q.question;
+  document.getElementById("reponses").innerHTML = "";
+  document.getElementById("feedback").textContent = "";
+
+  let progression = ((indexQuestion + 1) / quizSelection.length) * 100;
+  document.getElementById("progress").style.width = progression + "%";
+
+  let choixMelanges = q.choix.map((choix, index) => ({
+    texte: choix,
+    correct: index === q.bonneReponse
+  }));
+
+  melangerTableau(choixMelanges);
+
+  choixMelanges.forEach((choixObj, index) => {
+    const button = document.createElement("button");
+    button.textContent = choixObj.texte;
+
+    button.addEventListener("click", () => {
+      verifierReponse(index, choixMelanges);
+    });
+
+    document.getElementById("reponses").appendChild(button);
+  });
+}
+
 function verifierReponse(indexChoisi, choixMelanges) {
   const buttons = document.querySelectorAll("#reponses button");
 
   buttons.forEach((btn, index) => {
     btn.disabled = true;
 
-  if (choixMelanges[index].correct) {
+    if (choixMelanges[index].correct) {
       btn.classList.add("correct");
     } else if (index === indexChoisi) {
       btn.classList.add("wrong");
@@ -82,12 +73,12 @@ function verifierReponse(indexChoisi, choixMelanges) {
 
   if (choixMelanges[indexChoisi].correct) {
     score++;
-    document.getElementById("feedback").textContent = "✅ Well done !";
+    document.getElementById("feedback").textContent = "✅ Bonne réponse !";
   } else {
-    document.getElementById("feedback").textContent = "❌ Try again !";
+    document.getElementById("feedback").textContent = "❌ Mauvaise réponse !";
   }
 
-setTimeout(() => {
+  setTimeout(() => {
     indexQuestion++;
 
     if (indexQuestion < quizSelection.length) {
@@ -95,7 +86,7 @@ setTimeout(() => {
     } else {
       afficherScore();
     }
-  }, 1500);
+  }, 1000);
 }
 
 function afficherScore() {
@@ -110,22 +101,19 @@ function afficherScore() {
   document.getElementById("recommencerBtn").style.display = "block";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-  document.getElementById("recommencerBtn")
-    .addEventListener("click", afficherQuiz);
+  document.getElementById("startQuizBtn").addEventListener("click", function () {
+    document.getElementById("menu").style.display = "none";
+    document.querySelector(".container").style.display = "block";
+    afficherQuiz();
+  });
 
-  document.getElementById("startQuizBtn")
-    .addEventListener("click", function() {
-      document.getElementById("menu").style.display = "none";
-      document.querySelector(".container").style.display = "block";
-      afficherQuiz();
-    });
+  document.getElementById("recommencerBtn").addEventListener("click", afficherQuiz);
 
-  document.getElementById("menuBtn")
-    .addEventListener("click", function() {
-      document.getElementById("menu").style.display = "block";
-      document.querySelector(".container").style.display = "none";
-    });
+  document.getElementById("menuBtn").addEventListener("click", function () {
+    document.getElementById("menu").style.display = "block";
+    document.querySelector(".container").style.display = "none";
+  });
 
 });
